@@ -5,7 +5,7 @@ export const getRegExp = function (validatorName) {
     number: '/^[-]?\\d+(\\.\\d+)?$/',
     letter: '/^[A-Za-z]+$/',
     letterAndNumber: '/^[A-Za-z0-9]+$/',
-    mobilePhone: '/^[1][3-9][0-9]{9}$/',
+    mobilePhone: '/^(\+|\d)[0-9]{7,16}$/',
     letterStartNumberIncluded: '/^[A-Za-z]+[A-Za-z\\d]*$/',
     noChinese: '/^[^\u4e00-\u9fa5]+$/',
     chinese: '/^[\u4e00-\u9fa5]+$/',
@@ -37,22 +37,22 @@ const FormValidators = {
 
   /* 数字 */
   number(rule, value, callback) {
-    validateFn('number', rule, value, callback, '[' + rule.label + ']包含非数字字符')
+    validateFn('number', rule, value, callback, '[' + rule.label + '] contains non-numeric characters')
   },
 
   /* 字母 */
   letter(rule, value, callback) {
-    validateFn('letter', rule, value, callback, '[' + rule.label + ']包含非字母字符')
+    validateFn('letter', rule, value, callback, '[' + rule.label + '] contains non-alphabetic characters')
   },
 
   /* 字母和数字 */
   letterAndNumber(rule, value, callback) {
-    validateFn('letterAndNumber', rule, value, callback, '[' + rule.label + ']只能输入字母或数字')
+    validateFn('letterAndNumber', rule, value, callback, '[' + rule.label + '] enter only letters or numbers')
   },
 
   /* 手机号码 */
   mobilePhone(rule, value, callback) {
-    validateFn('mobilePhone', rule, value, callback, '[' + rule.label + ']手机号码格式有误')
+    validateFn('mobilePhone', rule, value, callback, '[' + rule.label + '] wrong phone number format')
   },
 
   /* 禁止空白字符开头 */
@@ -67,27 +67,27 @@ const FormValidators = {
 
   /* 字母开头，仅可包含数字 */
   letterStartNumberIncluded(rule, value, callback) {
-    validateFn('letterStartNumberIncluded', rule, value, callback, '[' + rule.label + ']必须以字母开头，可包含数字')
+    validateFn('letterStartNumberIncluded', rule, value, callback, '[' + rule.label + '] must start with a letter, can contain numbers')
   },
 
   /* 禁止中文输入 */
   noChinese(rule, value, callback) {
-    validateFn('noChinese', rule, value, callback, '[' + rule.label + ']不可输入中文字符')
+    validateFn('noChinese', rule, value, callback, '[' + rule.label + '] Chinese characters cannot be entered')
   },
 
   /* 必须中文输入 */
   chinese(rule, value, callback) {
-    validateFn('chinese', rule, value, callback, '[' + rule.label + ']只能输入中文字符')
+    validateFn('chinese', rule, value, callback, '[' + rule.label + '] Only Chinese characters can be entered')
   },
 
   /* 电子邮箱 */
   email(rule, value, callback) {
-    validateFn('email', rule, value, callback, '[' + rule.label + ']邮箱格式有误')
+    validateFn('email', rule, value, callback, '[' + rule.label + '] Email format is incorrect')
   },
 
   /* URL网址 */
   url(rule, value, callback) {
-    validateFn('url', rule, value, callback, '[' + rule.label + ']URL格式有误')
+    validateFn('url', rule, value, callback, '[' + rule.label + ']URL is wrong format')
   },
 
   /*测试

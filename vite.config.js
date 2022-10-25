@@ -66,6 +66,11 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
       },
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`
+      }
 
       // // 确保外部化处理那些你不想打包进库的依赖
       // external: ['vue', 'element-plus'],

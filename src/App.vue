@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     elLocale() {
-      let curLocale = localStorage.getItem('v_form_locale') || 'zh-CN'
+      let curLocale = localStorage.getItem('v_form_locale') || 'en-US'
       return this.elLocaleMap[curLocale]
     },
 

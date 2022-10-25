@@ -13,25 +13,12 @@
     <el-header class="main-header" v-if="designerConfig.logoHeader !== false">
       <div class="float-left main-title">
         <img src="../../assets/vform-logo.png" @click="openHome">
-        <span class="bold">{{vfProductName}}</span> {{vfProductTitle}} <span class="version-span">Ver {{vFormVersion}}</span></div>
-      <div class="float-right external-link">
-        <el-dropdown v-if="showLink('languageMenu')" :hide-timeout="2000" @command="handleLanguageChanged">
-          <span class="el-dropdown-link">{{curLangName}}<svg-icon icon-class="el-arrow-down" /></span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item command="zh-CN">{{i18nt('application.zh-CN')}}</el-dropdown-item>
-              <el-dropdown-item command="en-US">{{i18nt('application.en-US')}}</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-        <!--
-        <a v-if="showLink('externalLink')" href="javascript:void(0)" @click="(ev) => openUrl(ev, gitUrl)" target="_blank"><svg-icon icon-class="github" />{{i18nt('application.github')}}</a>
-        <a v-if="showLink('externalLink')" href="javascript:void(0)" @click="(ev) => openUrl(ev, docUrl)" target="_blank"><svg-icon icon-class="document" />{{i18nt('application.document')}}</a>
-        <a v-if="showLink('externalLink')" href="javascript:void(0)" @click="(ev) => openUrl(ev, chatUrl)" target="_blank">{{i18nt('application.qqGroup')}}</a>
-        <a v-if="showLink('externalLink')" href="javascript:void(0)" @click="(ev) => openUrl(ev, subScribeUrl)" target="_blank">
-          {{i18nt('application.subscription')}}<i class="el-icon-top-right"></i></a>
-        -->
-        <a href="javascript:void(0)">&nbsp;</a>
+        <span class="bold">CPT Form Builder</span></div>
+      <div class="float-right external-link" style="margin-top: 10px;">
+        <el-button type="text" class="btn btn-danger" @click="applyBuildCode">
+          Apply Builder</el-button>
+        <el-button type="text" class="btn btn-default" @click="backToForm">
+          Cancel</el-button>
       </div>
     </el-header>
 
@@ -110,8 +97,8 @@
         default: () => {
           return {
             languageMenu: true,  //是否显示语言切换菜单
-            externalLink: true,  //是否显示GitHub、文档等外部链接
-            formTemplates: true,  //是否显示表单模板
+            externalLink: false,  //是否显示GitHub、文档等外部链接
+            formTemplates: fase,  //是否显示表单模板
             eventCollapse: true,  //是否显示组件事件属性折叠面板
             widgetNameReadonly: false,  //禁止修改组件名称
 
@@ -119,8 +106,8 @@
             previewFormButton: true,  //是否显示预览表单按钮
             importJsonButton: true,  //是否显示导入JSON按钮
             exportJsonButton: true,  //是否显示导出JSON器按钮
-            exportCodeButton: true,  //是否显示导出代码按钮
-            generateSFCButton: true,  //是否显示生成SFC按钮
+            exportCodeButton: false,  //是否显示导出代码按钮
+            generateSFCButton: false,  //是否显示生成SFC按钮
             logoHeader: true,  //是否显示Logo头部区域（仅Pro）
 
             toolbarMaxWidth: 420,  //设计器工具按钮栏最大宽度（单位像素）
@@ -201,6 +188,9 @@
 
       this.loadCase()
       this.loadFieldListFromServer()
+
+      //added by lucdt
+      this.initFromCpt()
     },
     methods: {
       testEEH(eventName, eventParams) {
@@ -264,11 +254,14 @@
 
       initLocale() {
         this.curLocale = localStorage.getItem('v_form_locale')
-        if (!!this.vsCodeFlag) {
+        if(!this.curLocale){
+          this.curLocale = 'en-US'
+        }
+        /*if (!!this.vsCodeFlag) {
           this.curLocale = this.curLocale || 'en-US'
         } else {
           this.curLocale = this.curLocale || 'zh-CN'
-        }
+        }*/
         this.curLangName = this.i18nt('application.' + this.curLocale)
         this.changeLanguage(this.curLocale)
       },
@@ -330,6 +323,81 @@
         this.$refs.toolbarRef.clearFormWidget()
       },
 
+      //lucdt
+      applyBuildCode() {
+        let widgetList = deepClone(this.designer.widgetList)
+        let formConfig = deepClone(this.designer.formConfig)
+        this.jsonContent = JSON.stringify({widgetList, formConfig}, null, '  ')
+        this.jsonRawContent = JSON.stringify({widgetList, formConfig})
+        $('#form_json').val(this.jsonRawContent);
+        $('#form_vue').val(generateCode($.parseJSON(this.jsonRawContent), 'html'));
+
+        loadFormSetting();
+        toastr.options.positionClass = 'toast-bottom-right';
+        toastr.success('Applied new form design.')
+
+        $('#botble-cpt-forms-cpt-form').show();
+        $('#app').hide();
+      },
+
+      backToForm(){
+        $('#botble-cpt-forms-cpt-form').show();
+        $('#app').hide();
+      },
+
+      initFromCpt(){
+        let formJson = $('#form_json').val();
+        if(!formJson){
+          formJson = '{\n' +
+              '  "widgetList": [],\n' +
+              '  "formConfig": {\n' +
+              '    "modelName": "formData",\n' +
+              '    "refName": "vForm",\n' +
+              '    "rulesName": "rules",\n' +
+              '    "labelWidth": 80,\n' +
+              '    "labelPosition": "left",\n' +
+              '    "size": "",\n' +
+              '    "labelAlign": "label-left-align",\n' +
+              '    "cssCode": "",\n' +
+              '    "customClass": [],\n' +
+              '    "functions": "",\n' +
+              '    "layoutType": "PC",\n' +
+              '    "jsonVersion": 3,\n' +
+              '    "onFormCreated": "",\n' +
+              '    "onFormMounted": "",\n' +
+              '    "onFormDataChange": "",\n' +
+              '    "dataSources": []\n' +
+              '  }\n' +
+              '}';
+        }
+        if(formJson){
+          try {
+            this.importTemplate = formJson;
+            let importObj = JSON.parse(this.importTemplate)
+            //console.log('test import', this.importTemplate)
+            if (!importObj || !importObj.formConfig) {
+              throw new Error( this.i18nt('designer.hint.invalidJsonFormat') )
+            }
+
+            let fJsonVer = importObj.formConfig.jsonVersion
+            if (!fJsonVer || (fJsonVer !== 3)) {
+              throw new Error( this.i18nt('designer.hint.jsonVersionMismatch') )
+            }
+
+            this.designer.loadFormJson(importObj)
+
+            this.showImportJsonDialogFlag = false
+            this.$message.success(this.i18nt('designer.hint.importJsonSuccess'))
+
+            this.designer.emitHistoryChange()
+
+            this.designer.emitEvent('form-json-imported', [])
+          } catch(ex) {
+            this.$message.error(ex + '')
+          }
+        }
+      },
+      //end lucdt
 
       /**
        * 刷新表单设计器
