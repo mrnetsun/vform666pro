@@ -168,6 +168,8 @@
       },
 
       showFormTemplates() {
+        //lucdt
+        return false;
         if (this.designerConfig['formTemplates'] === undefined) {
           return true
         }

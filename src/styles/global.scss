@@ -100,6 +100,10 @@ input[type="password"]::-ms-reveal {  /* 隐藏IE/Edge原生的密码查看按�
   border-radius: 2em;
 }
 
+.el-radio-button__original-radio {
+  position: absolute !important;
+}
+
 .btn {
   display: inline-block;
   margin-bottom: 0;

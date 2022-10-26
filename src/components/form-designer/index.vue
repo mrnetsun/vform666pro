@@ -96,9 +96,9 @@
         type: Object,
         default: () => {
           return {
-            languageMenu: true,  //是否显示语言切换菜单
+            languageMenu: false,  //是否显示语言切换菜单
             externalLink: false,  //是否显示GitHub、文档等外部链接
-            formTemplates: fase,  //是否显示表单模板
+            formTemplates: false,  //是否显示表单模板
             eventCollapse: true,  //是否显示组件事件属性折叠面板
             widgetNameReadonly: false,  //禁止修改组件名称
 
@@ -330,7 +330,7 @@
         this.jsonContent = JSON.stringify({widgetList, formConfig}, null, '  ')
         this.jsonRawContent = JSON.stringify({widgetList, formConfig})
         $('#form_json').val(this.jsonRawContent);
-        $('#form_vue').val(generateCode($.parseJSON(this.jsonRawContent), 'html'));
+       // $('#form_vue').val(generateCode($.parseJSON(this.jsonRawContent), 'html'));
 
         loadFormSetting();
         toastr.options.positionClass = 'toast-bottom-right';
