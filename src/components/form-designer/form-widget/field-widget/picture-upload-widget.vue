@@ -81,6 +81,7 @@
         uploadHeaders: {},
         uploadData: {
           key: '',  //七牛云上传文件名
+          _token: document.querySelector('meta[name=csrf-token]').content,  //七牛云上传token
           //token: '',  //七牛云上传token
 
           //policy: '',  //又拍云上传policy
@@ -102,7 +103,11 @@
           return eval(this.field.options.uploadURL)
         }
 
-        return this.field.options.uploadURL
+        if(!uploadURL){
+          return '/admin/cpts/upload';
+        }else{
+          return this.field.options.uploadURL
+        }
       },
 
     },
