@@ -1,6 +1,6 @@
 export default {
   application: {
-	'ko-KO': '한국어',
+	'ko-KR': '한국어',
     'zh-CN': '简体中文',
     'en-US': 'English',
     productTitle: 'Online Form Designer',
