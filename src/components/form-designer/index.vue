@@ -13,12 +13,12 @@
     <el-header class="main-header" v-if="designerConfig.logoHeader !== false">
       <div class="float-left main-title">
         <img src="../../assets/vform-logo.png" @click="openHome">
-        <span class="bold">CPT Form Builder</span></div>
+        <span class="bold">{{vfProductTitle}}</span></div>
       <div class="float-right external-link" style="margin-top: 10px;">
         <el-button type="text" class="btn btn-danger" @click="applyBuildCode">
-          Apply Builder</el-button>
+          {{i18nt('application.btnApplyBuilder')}}</el-button>
         <el-button type="text" class="btn btn-default" @click="backToForm">
-          Cancel</el-button>
+          {{i18nt('application.btnCancel')}}</el-button>
       </div>
     </el-header>
 
@@ -253,15 +253,7 @@
       },
 
       initLocale() {
-        this.curLocale = localStorage.getItem('v_form_locale')
-        if(!this.curLocale){
-          this.curLocale = 'en-US'
-        }
-        /*if (!!this.vsCodeFlag) {
-          this.curLocale = this.curLocale || 'en-US'
-        } else {
-          this.curLocale = this.curLocale || 'zh-CN'
-        }*/
+        this.curLocale = 'ko-KR';
         this.curLangName = this.i18nt('application.' + this.curLocale)
         this.changeLanguage(this.curLocale)
       },

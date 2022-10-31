@@ -233,7 +233,7 @@
       },
 
       initLocale() {
-        let curLocale = localStorage.getItem('v_form_locale') || 'zh-CN'
+        let curLocale = 'zh-CN';//localStorage.getItem('v_form_locale') || 'zh-CN'
         this.changeLanguage(curLocale)
       },
 

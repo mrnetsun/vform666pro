@@ -3,12 +3,14 @@ export default {
     'ko-KR': '한국어',
 	'zh-CN': '简体中文',
     'en-US': 'English',
-    productTitle: '表单设计器',
+    productTitle: 'CPT 表单设计器',
     github: 'GitHub',
     document: '文档',
     qqGroup: '技术WX群',
     deployment: '私有部署',
     subscription: '订阅Pro',
+    btnApplyBuilder: '应用生成器',
+    btnCancel: '取消',
   },
 
   designer: {

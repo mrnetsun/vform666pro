@@ -3,12 +3,14 @@ export default {
 	'ko-KR': '한국어',
     'zh-CN': '简体中文',
     'en-US': 'English',
-    productTitle: 'Online Form Designer',
+    productTitle: 'CPT Form Designer',
     github: 'GitHub',
     document: 'Docs',
     qqGroup: 'WeChat Group',
     deployment: 'Deployment',
     subscription: 'Subscription',
+    btnApplyBuilder: 'Apply Builder',
+    btnCancel: 'Cancel',
   },
 
   designer: {

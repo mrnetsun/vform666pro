@@ -3,12 +3,14 @@ export default {
     'ko-KR': '한국어',
 	'zh-CN': '简体中文',
     'en-US': 'English',
-    productTitle: '업무양식 디자이너',
+    productTitle: 'CPT 업무양식 디자이너',
     github: 'GitHub',
     document: '문서',
     qqGroup: 'WeChat Group',
     deployment: '배포',
     subscription: '구독',
+    btnApplyBuilder: '빌더 적용',
+    btnCancel: '취소',
   },
 
   designer: {

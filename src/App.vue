@@ -34,7 +34,7 @@ export default {
       },
 
       elLocaleMap: {
-        'ko-KO': koKOLang,
+        'ko-KR': koKOLang,
         'zh-CN': zhCNLang,
         'en-US': enUSLang,
       },
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     elLocale() {
-      let curLocale = 'ko-KO';//localStorage.getItem('v_form_locale') || 'en-US'
+      let curLocale = 'ko-KR';//localStorage.getItem('v_form_locale') || 'en-US'
       return this.elLocaleMap[curLocale]
     },
 
