@@ -1,5 +1,6 @@
 export default {
   application: {
+	'ko-KO': '한국어',
     'zh-CN': '简体中文',
     'en-US': 'English',
     productTitle: 'Online Form Designer',
@@ -52,6 +53,7 @@ export default {
       slider:         'Slider',
       'static-text':  'Text',
       'html-text':    'HTML',
+      'botble-image':    'Botble Media',
       button:         'Button',
       divider:        'Divider',
 

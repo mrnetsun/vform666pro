@@ -88,7 +88,8 @@
         uploadData: {
           key: '',  //七牛云上传文件名
           //token: '',  //七牛云上传token
-          _token: document.querySelector('meta[name=csrf-token]').content
+          _token: document.querySelector('meta[name=csrf-token]').content,
+          fileTypes:this.field.options.fileTypes,
 
           //policy: '',  //又拍云上传policy
           //authorization: '',  //又拍云上传签名

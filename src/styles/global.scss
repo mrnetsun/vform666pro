@@ -104,6 +104,11 @@ input[type="password"]::-ms-reveal {  /* 隐藏IE/Edge原生的密码查看按�
   position: absolute !important;
 }
 
+.el-message{
+  z-index: 999999!important;
+  top:50px!important;
+}
+
 .btn {
   display: inline-block;
   margin-bottom: 0;

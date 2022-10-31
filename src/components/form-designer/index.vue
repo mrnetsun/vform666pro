@@ -346,7 +346,12 @@
       },
 
       initFromCpt(){
-        let formJson = $('#form_json').val();
+        let formSetting = document.getElementById('#form_json');
+        let formJson = '';
+        if(formSetting){
+           formJson = formSetting.value;
+        }
+
         if(!formJson){
           formJson = '{\n' +
               '  "widgetList": [],\n' +
@@ -369,8 +374,7 @@
               '    "dataSources": []\n' +
               '  }\n' +
               '}';
-        }
-        if(formJson){
+        }else{
           try {
             this.importTemplate = formJson;
             let importObj = JSON.parse(this.importTemplate)
@@ -387,7 +391,7 @@
             this.designer.loadFormJson(importObj)
 
             this.showImportJsonDialogFlag = false
-            this.$message.success(this.i18nt('designer.hint.importJsonSuccess'))
+            //this.$message.success(this.i18nt('designer.hint.importJsonSuccess'))
 
             this.designer.emitHistoryChange()
 

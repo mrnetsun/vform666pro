@@ -1,6 +1,7 @@
 export default {
   application: {
-    'zh-CN': '简体中文',
+    'ko-KO': '한국어',
+	'zh-CN': '简体中文',
     'en-US': 'English',
     productTitle: '表单设计器',
     github: 'GitHub',
