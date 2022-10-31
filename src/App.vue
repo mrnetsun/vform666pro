@@ -11,7 +11,7 @@ import VFormDesigner from './components/form-designer/index.vue'
 
 import zhCNLang from 'element-plus/lib/locale/lang/zh-cn'
 import enUSLang from 'element-plus/lib/locale/lang/en'
-import koKOLang from 'element-plus/lib/locale/lang/ko'
+import koKRLang from 'element-plus/lib/locale/lang/ko'
 
 export default {
   name: 'App',
@@ -34,7 +34,7 @@ export default {
       },
 
       elLocaleMap: {
-        'ko-KR': koKOLang,
+        'ko-KR': koKRLang,
         'zh-CN': zhCNLang,
         'en-US': enUSLang,
       },
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     elLocale() {
-      let curLocale = 'ko-KR';//localStorage.getItem('v_form_locale') || 'en-US'
+      let curLocale = localStorage.getItem('v_form_locale') || 'en-US'
       return this.elLocaleMap[curLocale]
     },
 
