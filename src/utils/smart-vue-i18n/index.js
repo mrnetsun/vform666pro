@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 import { get } from './utils'
 
 let locale = reactive({
-    lang: localStorage.getItem('v_form_locale') || 'zh-CN',
+    lang: localStorage.getItem('v_form_locale') || 'en-US',
 })
 
 export function createI18n(options) {

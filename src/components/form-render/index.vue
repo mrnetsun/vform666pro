@@ -233,8 +233,28 @@
       },
 
       initLocale() {
-        let curLocale = 'zh-CN';//localStorage.getItem('v_form_locale') || 'zh-CN'
-        this.changeLanguage(curLocale)
+        try{
+            let langName = $('#site-locale').val();
+            // alert(langName);
+            let load_lang = 'en-US';
+            switch (langName) {
+              case 'ko':
+                load_lang = 'ko-KR'
+                break;
+              case 'zh':
+                load_lang = 'zh-CN'
+                break;
+              case 'en':
+              default:
+                load_lang = 'en-US'
+                break;
+            }
+            // let curLocale = localStorage.getItem('v_form_locale') || 'en-US'
+            this.changeLanguage(load_lang)
+        }catch (e) {
+            console.log(e);
+        }
+
       },
 
       insertCustomStyleAndScriptNode() {
@@ -498,7 +518,7 @@
       },
 
       getLanguageName() {
-        return localStorage.getItem('v_form_locale') || 'zh-CN'
+        return localStorage.getItem('v_form_locale') || 'en-US'
       },
 
       getNativeForm() { //获取原生form引用
