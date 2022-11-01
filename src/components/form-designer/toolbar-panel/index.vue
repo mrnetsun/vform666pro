@@ -34,10 +34,6 @@
           {{i18nt('designer.toolbar.importJson')}}</el-button>
         <el-button v-if="showToolButton('exportJsonButton')" type="text" @click="exportJson">
           {{i18nt('designer.toolbar.exportJson')}}</el-button>
-        <el-button v-if="showToolButton('exportCodeButton')" type="text" @click="exportCode">
-          {{i18nt('designer.toolbar.exportCode')}}</el-button>
-        <el-button v-if="showToolButton('generateSFCButton')" type="text" @click="generateSFC">
-          <svg-icon icon-class="vue-sfc" />{{i18nt('designer.toolbar.generateSFC')}}</el-button>
         <template v-for="(idx, slotName) in $slots">
           <slot :name="slotName"></slot>
         </template>

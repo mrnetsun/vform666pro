@@ -385,7 +385,7 @@ export default {
                   '    "dataSources": []\n' +
                   '  }\n' +
                   '}';
-          } else {
+              }
               this.importTemplate = formJson;
               let importObj = JSON.parse(this.importTemplate)
               //console.log('test import', this.importTemplate)
@@ -407,7 +407,7 @@ export default {
               this.designer.emitHistoryChange()
 
               this.designer.emitEvent('form-json-imported', [])
-          }
+
         } catch (e) {
             console.log(e);
         }
