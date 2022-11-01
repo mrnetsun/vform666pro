@@ -1,0 +1,12 @@
+Maybe you can read this guide(using google translation):
+--------------------------------------------------------
+Vue 2(password: fvih)
+https://www.yuque.com/docs/share/8e90ea1a-6a0c-4396-ac55-a6f1845d0785?
+
+Vue 3(password: hz4m)
+https://www.yuque.com/docs/share/8f6fe711-b69f-409d-a2f2-62e14cee43c4?
+
+
+ I tried add more language in VForm by make translation in folder "variant-form3-pro3\src\lang".
+And I tried to set load Language on App.vue, but no label showed, Any wrong in my configuration?
+You also need to modify the file of 'utils/i18n.js'.
